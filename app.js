@@ -1,6 +1,18 @@
 "use strict";
 import {heroes} from "./data/heroes.js";
-console.log(heroes)
+let componente = document.querySelector('lista-heroes');
+console.log(componente)
+const filtrarsuperheroes = (texto) =>{
+    let listanueva = [];
+    heroes.forEach(personaje => {
+        if (personaje.clave.toLocaleLowerCase().startsWith(texto)) {
+            listanueva.push(personaje)
+        }
+    });
+    componente = document.querySelector('lista-heroes');
+    console.log(listanueva)
+    componente.heroes = listanueva
+}
 class Barrabusqueda extends HTMLElement{
     constructor() {
         super();
@@ -53,18 +65,26 @@ class Barrabusqueda extends HTMLElement{
             <div class="barra-busq">
                 <form action="">
                     <h1 class="texto-buscar">Buscar</h1>
-                    <input type="text">
+                    <input id="input-busqueda" type="text">
                     <p><span class="material-symbols-outlined">search</span></p>
                 </form>
             </div>`;
+    }
+    connectedCallback(){
+        let dato = this.shadowRoot.querySelector('#input-busqueda')
+        dato.addEventListener('input', () =>{
+            let valor = dato.value.toLowerCase()
+            filtrarsuperheroes(valor)
+        })
     }
 }
 class MostrarHeroes extends HTMLElement{
     constructor(){
         super();
         this.attachShadow ({mode:'open'});
-        const estilo = document.createElement('style');
-        estilo.innerHTML = /*css*/`
+        this._heroes = []
+        this.estilos = document.createElement('style') 
+        this.estilos.innerHTML = /*css*/`
         .Heroe{
             margin: 1.3rem;
             margin-top: 3rem;
@@ -95,6 +115,7 @@ class MostrarHeroes extends HTMLElement{
                 font-size: 1.3rem;
             }
             button{
+                border-radius: 0.5rem;
                 background-color: var(----tercercolor);
                 font-size: 2rem;
                 color: var(----cuartocolor);
@@ -103,9 +124,17 @@ class MostrarHeroes extends HTMLElement{
                 width: 9rem;
                 text-shadow: 2px 2px 3px var(----primercolor);
             }
-        }`;
-        this.shadowRoot.appendChild(estilo)
-        heroes.forEach(heroe => {
+        }`
+        this.shadowRoot.appendChild(this.estilos)
+    }
+    set heroes(value){
+        this._heroes = value;
+        this.render();
+    }
+    render(){
+        this.shadowRoot.innerHTML = '';
+        this.shadowRoot.appendChild(this.estilos.cloneNode(true));
+        this._heroes.forEach(heroe => {
             const cadena = document.createElement('div');
             cadena.classList.add('Heroe')
             cadena.innerHTML = /*html*/`
@@ -115,14 +144,13 @@ class MostrarHeroes extends HTMLElement{
                 <p>${heroe.casa}</p>
                 <p>${heroe.año}</p>
                 <p>${heroe.descripcion}</p>
-                <button id="boton-${heroe.nombre}">Ver mas</button>`;
-            this.shadowRoot.appendChild(cadena)
-            cadena.querySelector(`boton-${heroe.nombre}`).addEventListener("click",(e)=>{
-                e.preventDefault()
+                <button id="heroe-${heroe.clave}">Ver mas</button>`;
+            this.shadowRoot.appendChild(cadena);
+            cadena.querySelector(`#heroe-${heroe.clave}`).addEventListener('click',() =>{
                 Swal.fire({
-                    title: heroe.nombre,
-                    text: "descripcion spiderman",
-                    imageUrl: "./img/spider-man.jpg",
+                    title: heroe.clave,
+                    text: heroe.descripcionplus,
+                    imageUrl: heroe.img,
                     imageWidth: 400,
                     imageHeight: 550,
                     color: "#fedb0e",
@@ -132,9 +160,10 @@ class MostrarHeroes extends HTMLElement{
                     backdrop: `
                     rgba(255, 217, 0, 0.29)`
                     });
-            })
-        });
+            });
+        });  
     }
 }
 customElements.define('barra-busqueda',Barrabusqueda);
 customElements.define('lista-heroes',MostrarHeroes);
+componente.heroes = heroes
