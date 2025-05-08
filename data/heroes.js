@@ -23,10 +23,7 @@ export const heroes = [
       "año": "1938",
       "descripcion": "Superman es el símbolo de esperanza, justicia y fuerza moral, con poderes casi ilimitados"
     },
-    {
-      "nombre": "Tony Stark",
-      "img": "img/iron-man.jpg",
-      "clave": "Iron Man",
+    {       </style>       </style>n Man",
       "casa": "Marvel",
       "año": "1963",
       "descripcion": "Iron Man es un genio multimillonario que combate el mal con una armadura de alta tecnología"

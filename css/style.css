@@ -17,4 +17,15 @@
 }
 lista-heroes{
     display: grid;
-    grid-template-columns: repeat(4,25%);}
+    grid-template-columns: repeat(4,25%);
+}
+.swal2-title{
+    margin-top: -2rem;
+    text-shadow: 2px 2px 4px var(----cuartocolor);
+    font-weight: 100;
+    font-size: 3rem;
+}
+.swal2-html-container{
+    color: black;
+    text-shadow: 2px 2px 3px white;
+}

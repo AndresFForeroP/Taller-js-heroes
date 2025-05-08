@@ -1,7 +1,6 @@
 "use strict";
 import {heroes} from "./data/heroes.js";
 console.log(heroes)
-
 class Barrabusqueda extends HTMLElement{
     constructor() {
         super();
@@ -64,8 +63,8 @@ class MostrarHeroes extends HTMLElement{
     constructor(){
         super();
         this.attachShadow ({mode:'open'});
-        let cadena = /*css*/`
-        <style>
+        const estilo = document.createElement('style');
+        estilo.innerHTML = /*css*/`
         .Heroe{
             margin: 1.3rem;
             margin-top: 3rem;
@@ -104,21 +103,37 @@ class MostrarHeroes extends HTMLElement{
                 width: 9rem;
                 text-shadow: 2px 2px 3px var(----primercolor);
             }
-        }
-        </style>`
+        }`;
+        this.shadowRoot.appendChild(estilo)
         heroes.forEach(heroe => {
-            cadena += /*html*/`
-            <div class="Heroe">
+            const cadena = document.createElement('div');
+            cadena.classList.add('Heroe')
+            cadena.innerHTML = /*html*/`
                 <h1 class="titulo-heroe">${heroe.nombre}</h1>
                 <img src=${heroe.img} alt="">
                 <p>${heroe.clave}</p>
                 <p>${heroe.casa}</p>
                 <p>${heroe.año}</p>
                 <p>${heroe.descripcion}</p>
-                <button>Ver mas</button>
-            </div>`;
+                <button id="boton-${heroe.nombre}">Ver mas</button>`;
+            this.shadowRoot.appendChild(cadena)
+            cadena.querySelector(`boton-${heroe.nombre}`).addEventListener("click",(e)=>{
+                e.preventDefault()
+                Swal.fire({
+                    title: heroe.nombre,
+                    text: "descripcion spiderman",
+                    imageUrl: "./img/spider-man.jpg",
+                    imageWidth: 400,
+                    imageHeight: 550,
+                    color: "#fedb0e",
+                    confirmButtonColor: "black",
+                    imageAlt: "Custom image",
+                    background: "#41a6de",
+                    backdrop: `
+                    rgba(255, 217, 0, 0.29)`
+                    });
+            })
         });
-        this.shadowRoot.innerHTML = cadena
     }
 }
 customElements.define('barra-busqueda',Barrabusqueda);
