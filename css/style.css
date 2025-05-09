@@ -1,3 +1,5 @@
+/* 
+   Definición de variables de color personalizadas en la raíz del documento.*/
 :root{
     ----primercolor: #2c2c2c;
     ----segundocolor:#41a6de;
@@ -5,13 +7,22 @@
     ----cuartocolor: #f6343c;
     ----quintocolor: #d01e00;
 }
+/* 
+   Aplicación de la fuente "Bangers" a todos los elementos del documento.
+*/
 *{
     font-family: "Bangers";
 }
+/* 
+   Establece un fondo de imagen con un gradiente blanco semitransparente encima para darle claridad.
+*/
 body{
     background:
     linear-gradient(rgba(255, 255, 255, 0.7),rgb(255, 255, 255,0.7)),url(/img/fondo.jpg);
 }
+/* 
+   Configuración para íconos de Material Symbols, especificando sus estilos por defecto.
+*/
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
@@ -19,25 +30,43 @@ body{
   'GRAD' 0,
   'opsz' 24
 }
+/* 
+   Define una grilla de 4 columnas para el componente personalizado "lista-heroes".
+*/
 lista-heroes{
     display: grid;
     grid-template-columns: repeat(4,25%);
 }
+/* 
+   Estilo para el título de los cuadros de diálogo SweetAlert2.
+   Se le aplica sombra con el cuarto color y un tamaño de fuente grande.
+*/
 .swal2-title{
     margin-top: -2rem;
     text-shadow: 2px 2px 4px var(----cuartocolor);
     font-weight: 100;
     font-size: 3rem;
 }
+/* 
+   Estilo del contenido HTML dentro del cuadro de diálogo SweetAlert2.
+   Texto negro con sombra blanca para mejor legibilidad.
+*/
 .swal2-html-container{
     color: black;
     text-shadow: 2px 2px 3px white;
 }
+/* 
+   Estilo para la imagen mostrada en SweetAlert2.
+   Se limita el tamaño y se aplica un borde redondeado.
+*/
 .swal2-image{
     border-radius: 1rem;
     max-width: 90%;
     max-height: 90%;
 }
+/* 
+   Estilos personalizados para los botones dentro del área de acciones de SweetAlert2.
+*/
 .swal2-actions{
     button{
         background-color: var(----tercercolor);
@@ -47,11 +76,19 @@ lista-heroes{
         font-size: 1.6rem;
     }
 }
+/* 
+   Media query para pantallas pequeñas (hasta 768px).
+   Se cambia el diseño de "lista-heroes" a bloque para mejorar la visualización en móvil.
+*/
 @media(max-width:768px) {
     lista-heroes{
         display: block;
     }
 }
+/* 
+   Media query para pantallas medianas (entre 768px y 1180px).
+   Se muestra la grilla en 2 columnas del 50%.
+*/
 @media(max-width:1180px) and (min-width:768px) {
     lista-heroes{
         display: grid;

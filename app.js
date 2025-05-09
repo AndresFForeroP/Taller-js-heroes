@@ -1,7 +1,20 @@
+/**
+ * Proytecto Buscador de SuperHeroes
+ * Autor: Andres Forero
+ * Fecha: 9/mayo/2025
+ */
 "use strict";
+/** Importo el arreglo donde estan los heroes*/
 import {heroes} from "./data/heroes.js";
 let componente = document.querySelector('lista-heroes');
 console.log(componente)
+/**Esta funcion se usa cada vez que el usuario escribe alguna letra en 
+ * el buscador, usa un forEach para recorrer el arreglo con los heroes
+ * y si el nombre del heroe coincide con el que esta en la barra
+ * lo agrega a otro arreglo llamado lista nueva
+ * luego le enviamos al webcomponent encargado de crear las tarjetas de
+ * heroes la lista nueva para que se muestren los heroes buscados
+ */
 const filtrarsuperheroes = (texto) =>{
     let listanueva = [];
     heroes.forEach(personaje => {
@@ -13,6 +26,11 @@ const filtrarsuperheroes = (texto) =>{
     console.log(listanueva)
     componente.heroes = listanueva
 }
+/**Web componen encargado de crear la barra de busqueda,se le agregan
+ * los estilos y las etiquetas necesarias para crearla en el html,
+ * cuenta con una funcion que se usa cada vez que se escribe algo
+ * en el input
+ */
 class Barrabusqueda extends HTMLElement{
     constructor() {
         super();
@@ -105,6 +123,9 @@ class Barrabusqueda extends HTMLElement{
         })
     }
 }
+/**Web component encargado en crear todas las tarjetas de los superheroes 
+ *este componente va cambiando segun la lista de heroes que tenga en la clave componente.heroes
+*/
 class MostrarHeroes extends HTMLElement{
     constructor(){
         super();
@@ -198,6 +219,9 @@ class MostrarHeroes extends HTMLElement{
         });  
     }
 }
+//**Se definen los web components en el html y se le agrega la
+// lista incial de superheroes para que al iniciarse la pagina
+// muestre todos los superheroes */
 customElements.define('barra-busqueda',Barrabusqueda);
 customElements.define('lista-heroes',MostrarHeroes);
 componente.heroes = heroes

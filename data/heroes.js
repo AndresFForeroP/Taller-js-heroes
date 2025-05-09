@@ -1,3 +1,8 @@
+/**
+ * Este archivo js tiene el arreglo con los objetos literales que 
+ * contienen los datos de cada superheroe y la direccion de donde se va
+ * a tomar la img del superheroe cada vez que sea necesario
+ */
 export const heroes = [
   {
     "nombre": "Peter Parker",

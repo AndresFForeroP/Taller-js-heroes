@@ -5,7 +5,7 @@ Este es un proyecto web que permite buscar y visualizar superhéroes de manera i
 ## 🚀 Características
 
 - 🔍 Barra de búsqueda para filtrar superhéroes en tiempo real.
-- 🧩 Cada superhéroe se muestra dentro de un **Web Component** personalizado (`<superhero-card>`).
+- 🧩 Cada superhéroe se muestra dentro de un **Web Component** personalizado.
 - 📱 Diseño completamente **responsivo**, ideal para móviles, tabletas y escritorio.
 - 💡 Código organizado y fácil de mantener utilizando componentes reutilizables.
 
