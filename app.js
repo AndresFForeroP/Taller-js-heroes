@@ -61,6 +61,24 @@ class Barrabusqueda extends HTMLElement{
                         font-weight: 100;
                     }
                 }
+                @media(max-width:768px) {
+                    .barra-busq{
+                    margin:0px;
+                    width: 370px;
+                        .texto-buscar{
+                        margin:10px;
+                        font-size:2.5rem;}
+                    }
+                    input{
+                        margin:1px;
+                    }
+                    p{
+                        margin-top:18px;
+                        margin-left:-20px;
+                        font-size: 1.8rem;
+                    }
+                }
+}
             </style>
             <div class="barra-busq">
                 <form action="">
@@ -124,7 +142,20 @@ class MostrarHeroes extends HTMLElement{
                 width: 9rem;
                 text-shadow: 2px 2px 3px var(----primercolor);
             }
-        }`
+        }
+        @media(max-width:768px) {
+            lista-heroes{
+                display: block;
+                .heroes{
+                   img{ 
+                        max-width: 230px;
+                        max-height: 260px;
+                        width: 230px;
+                        height:260px;
+                    }
+                }
+            }
+}`
         this.shadowRoot.appendChild(this.estilos)
     }
     set heroes(value){

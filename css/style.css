@@ -29,3 +29,9 @@ lista-heroes{
     color: black;
     text-shadow: 2px 2px 3px white;
 }
+@media(max-width:768px) {
+    lista-heroes{
+        display: block;
+        
+    }
+}
