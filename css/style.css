@@ -1,12 +1,16 @@
 :root{
-    ----primercolor: black;
-    ----segundocolor: #41a6de;
+    ----primercolor: #2c2c2c;
+    ----segundocolor:#41a6de;
     ----tercercolor: #fedb0e;
     ----cuartocolor: #f6343c;
     ----quintocolor: #d01e00;
 }
 *{
     font-family: "Bangers";
+}
+body{
+    background:
+    linear-gradient(rgba(255, 255, 255, 0.7),rgb(255, 255, 255,0.7)),url(/img/fondo.jpg);
 }
 .material-symbols-outlined {
   font-variation-settings:
@@ -29,12 +33,26 @@ lista-heroes{
     color: black;
     text-shadow: 2px 2px 3px white;
 }
+.swal2-image{
+    border-radius: 1rem;
+    max-width: 90%;
+    max-height: 90%;
+}
+.swal2-actions{
+    button{
+        background-color: var(----tercercolor);
+        border: 2px solid var(----primercolor);
+        color: var(----cuartocolor);
+        text-shadow: 1px 1px 2px var(----primercolor);
+        font-size: 1.6rem;
+    }
+}
 @media(max-width:768px) {
     lista-heroes{
         display: block;
     }
 }
-@media(max-width:1024px) and (min-width:768px) {
+@media(max-width:1180px) and (min-width:768px) {
     lista-heroes{
         display: grid;
         grid-template-columns: repeat(2,50%);

@@ -78,7 +78,7 @@ class Barrabusqueda extends HTMLElement{
                         font-size: 1.8rem;
                     }
                 }
-                @media(max-width:1024px) and (min-width:768px){
+                @media(max-width:1180px) and (min-width:768px){
                     .barra-busq{
                         margin:0px;
                         width: 770px;
@@ -142,6 +142,7 @@ class MostrarHeroes extends HTMLElement{
                 font-size: 1.3rem;
             }
             button{
+                font-family: "Bangers";
                 border-radius: 0.5rem;
                 background-color: var(----tercercolor);
                 font-size: 2rem;
@@ -191,7 +192,7 @@ class MostrarHeroes extends HTMLElement{
                     imageAlt: "Custom image",
                     background: "#41a6de",
                     backdrop: `
-                    rgba(255, 217, 0, 0.29)`
+                    rgba(194, 3, 44, 0.13)`
                     });
             });
         });  
