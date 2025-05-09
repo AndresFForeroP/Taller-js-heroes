@@ -32,6 +32,11 @@ lista-heroes{
 @media(max-width:768px) {
     lista-heroes{
         display: block;
-        
+    }
+}
+@media(max-width:1024px) and (min-width:768px) {
+    lista-heroes{
+        display: grid;
+        grid-template-columns: repeat(2,50%);
     }
 }

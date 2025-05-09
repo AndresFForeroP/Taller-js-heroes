@@ -78,6 +78,15 @@ class Barrabusqueda extends HTMLElement{
                         font-size: 1.8rem;
                     }
                 }
+                @media(max-width:1024px) and (min-width:768px){
+                    .barra-busq{
+                        margin:0px;
+                        width: 770px;
+                            .texto-buscar{
+                            margin-left:50px;
+                            font-size:3rem;}
+                        }
+                }
 }
             </style>
             <div class="barra-busq">
@@ -111,15 +120,15 @@ class MostrarHeroes extends HTMLElement{
             background-color: var(----segundocolor);
             text-align: center;
             img{
-                max-width: 13vw;
-                max-height:16vw;
+                width: 14rem;
+                height:19rem;
                 border: 2px solid black;
             }
             .titulo-heroe{
                 color: var(----cuartocolor);
                 text-shadow: 3px 3px 3px black;
                 font-weight: 100;
-                font-size: 3vw;
+                font-size: 3rem;
             }
             p{
                 font-size: 1.8rem;
@@ -146,14 +155,6 @@ class MostrarHeroes extends HTMLElement{
         @media(max-width:768px) {
             lista-heroes{
                 display: block;
-                .heroes{
-                   img{ 
-                        max-width: 230px;
-                        max-height: 260px;
-                        width: 230px;
-                        height:260px;
-                    }
-                }
             }
 }`
         this.shadowRoot.appendChild(this.estilos)
@@ -186,6 +187,7 @@ class MostrarHeroes extends HTMLElement{
                     imageHeight: 550,
                     color: "#fedb0e",
                     confirmButtonColor: "black",
+                    confirmButtonText:"SALIR",
                     imageAlt: "Custom image",
                     background: "#41a6de",
                     backdrop: `
